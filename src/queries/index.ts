@@ -1,6 +1,6 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
-import {Project, ProjectSchema} from "@/queries/schema";
+import {Project, ProjectSchema} from "@/types/schema";
 
 const fetchProject = async (): Promise<Project> => {
     const res = await fetch("https://technical-test-866419219838.europe-west3.run.app/projects/1");
@@ -17,7 +17,5 @@ export const useProject = () => {
     return useQuery<Project>({
         queryKey: ["project"],
         queryFn: fetchProject,
-        staleTime: 1000 * 60 * 5,
-        retry: 2,
     });
 };

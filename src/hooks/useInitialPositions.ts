@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {BiologicalModel, Project, TechnicalChallenge} from "@/queries/schema";
+import {BiologicalModel, Project, TechnicalChallenge} from "@/types/schema";
 
 interface Position {
     x: number;
@@ -20,15 +20,14 @@ export const useInitialPositions = (data?: Project) => {
         const initialPositions: Positions = {};
         const startY = 100;
         const spacingX = 600;
-        const spacingY = 10;
 
-        initialPositions["project"] = { x: 600, y: startY, zIndex: 1 };
+        initialPositions["project"] = { x: 550, y: startY, zIndex: 1 };
 
         data.technicalChallenges.forEach((challenge: TechnicalChallenge, index) => {
-            const challengeX = -100 + (index - (data.technicalChallenges.length - 1) / 2) * spacingX;
+            const challengeX = -150 + (index - (data.technicalChallenges.length - 1) / 2) * spacingX;
             initialPositions[`challenge-${challenge.id}`] = {
                 x: challengeX,
-                y: startY + spacingY,
+                y: 10,
                 zIndex: 2,
             };
 
